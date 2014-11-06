@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Creation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+<link rel="stylesheet" type="text/css" href="/views/style.css" />
+<!--[if IE 6]>
+<link rel="stylesheet" type="text/css" href="/views/iecss.css" />
+<![endif]-->
+</head>
+<body>
+<div id="main_container">
+  <div class="top_illustration"></div>
+  <div id="header">
+    <div class="logo"> <img src="/views/images/logo.jpeg" alt="logo doodle" border="0" /> </div>
+  </div>
+  <div id="menu_tab">
+    <ul class="menu" style="margin-right: 10%;">
+      <li><a href="/doodle" class="nav"> Home </a></li>
+      <li class="divider"></li>
+      <li><a href="/doodle/creation" class="nav_selected"> Doodle</a></li>
+      <li class="divider"></li>
+      <li><a href="/doodle/aide" class="nav"> Aide</a></li>
+      <li class="divider"></li>
+      <li><a href="/doodle/about" class="nav"> À propos </a></li>
+    </ul>
+  </div>
+  <div id="main_content">
+    <div id="middle_banner">
+      <div class="middle_banner_content"></div>
+    </div>
+    <div id="wide_content">
+      <h1 style="clear:both;">Création du sondage</h1>
+      <p class="clear"> </p>
+	  	<form action="/doodle/creation/" method="post">
+			<p>Intitulé du sondage : </p>
+			<textarea id="sondage" type="text" rows="6" cols="87" name="question" onkeyup="check()"></textarea>
+			</br>
+			</br>
+			<p>Choix possibles : </p>
+			</br>			
+			<span style="margin-left: 27%; font-size: 12px;">Choix 1 &nbsp;: &nbsp;</span><input id="choix" onkeyup="check()" type="text" name="Option1" id="Option1"/>
+			</br></br>
+			<span style="margin-left: 27%; font-size: 12px;">Choix 2* : &nbsp;</span><input type="text" name="Option2" id="Option2"/>
+			</br></br>			
+			<span style="margin-left: 27%; font-size: 12px;">Choix 3* : &nbsp;</span><input type="text" name="Option3" id="Option3"/>	
+			</br></br>		
+			<span style="margin-left: 27%; font-size: 12px;">Choix 4* : &nbsp;</span><input type="text" name="Option4" id="Option4"/>
+			</br></br>		
+			<span style="margin-left: 27%; font-size: 12px;">Choix 5* : &nbsp;</span><input type="text" name="Option5" id="Option5"/>
+			</br></br>		
+			<span style="margin-left: 27%; font-size: 12px;">Choix 6* : &nbsp;</span><input type="text" name="Option6" id="Option6"/>
+			</br></br>
+			</br></br>
+			<center><input id="valider" disabled="disabled" type="submit" value="Créer"/></center>
+		</form>
+	</br>
+	<p class="clear" style="font-style: italic;">Les champs avec * sont optionnels.</p>
+    </div>
+	
+    <div id="footer">Project WEB Design &copy; 2014 <br />
+      By <a style="color: #FF6600; text-decoration: underline;">Project Team</a> </div>
+  </div>
+</div>
+</body>
+<script>
+function check() {
+	if(document.getElementById("sondage").value !== '') {
+	    if(document.getElementById("choix").value !== '') {
+	      document.getElementById("valider").disabled = false;
+          } else {
+	    document.getElementById("valider").disabled = true;
+          }
+	} else {
+	    document.getElementById("valider").disabled = true;
+          }
+}
+</script>
+</html>

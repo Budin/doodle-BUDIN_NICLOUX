@@ -1,0 +1,68 @@
+L'application fonctionne via node.js.
+
+----------------------------------
+     Installation de node.js
+----------------------------------
+1) Tout d'abord, il faut installer node.js pour que l'application fonctionne.
+.Sous Ubuntu : 
+Installer node.js sous ubuntu est asez simple, il suffit d'installer les paquets node.js npm.
+À saisir dans un terminal, utilisez ici la commande apt-get :
+	sudo apt-get update
+	sudo apt-get install nodejs npm
+
+
+.Sous Windows et Mac OS X :
+Pour installer Node.js sous Windows ou Mac OS X, il faut télécharger l'installateur qui est disponible sur le site de Node.js à ladresse suivante:
+	http://nodejs.org/
+
+
+Pour vérifier que Node est bien installé, tapez la commande suivante dans la console :
+	node -v node
+
+Cela devrait afficher le numéro de version de Node.js que vous avez installé.
+
+----------------------------------
+Installation de l'application WEB
+----------------------------------
+
+2) Ensuite, pour installer l'application WEB :
+Normalement aucune installation supplémentaire n'est nécessaire la seule chose nécessaire est l'installation des dépendances du module canvas et l'installation du module express s'ils ne sont pas de base installées sur votre ordinateur.
+Il faut télécharger Cairo s'il n'est pas déjà installé sur votre ordinateur.
+
+.Sur linux :
+Entrez les commandes dans le terminal :
+	$ sudo apt-get update 
+	$ sudo apt-get install libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++
+	$ sudo npm install express
+
+.Sur windows et Mac OS X:
+Téléchargez l'installateur disponible en version bêta (attention il a fonctionné sur 1 ordinateur sur 2 avec cette méthode).
+
+Les modules sont déjà enregistrés dans le dossier : node_modules. 
+La commande : npm update suffit pour installer tous les modules.
+
+Cependant en cas de problème en relation avec l'installation des modules suivez la procédure suivante :
+Placez-vous à la racine du dossier doodle (Dans le terminal: cd doodle (sous linux)).
+Puis pour installer les modules il faut taper la commande :
+	sudo npm install nomdumodule
+
+L'application WEB pour fonctionner requiert l'installation des modules suivants :
+_ express (exemple : sudo npm install express)
+_ fs
+_ canvas (sudo npm install canvas)
+_ shortid
+_ nchart
+_ ejs
+
+------------------------------
+  Lancer l'application WEB
+------------------------------
+
+3) Pour lancer l'application WEB :
+_Ouvrez le terminal. 
+_Placez-vous à la racine du dossier doodle à l'aide de la commande cd puis lancez la commande :
+	node index.js
+
+_Ouvrez votre navigateur,l'application WEB est disponible à l'adresse suivant :
+	http://localhost:8080/doodle
+

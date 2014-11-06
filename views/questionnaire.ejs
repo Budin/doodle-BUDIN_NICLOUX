@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Questionnaire</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+<link rel="stylesheet" type="text/css" href="/views/style.css" />
+<!--[if IE 6]>
+<link rel="stylesheet" type="text/css" href="/views/iecss.css" />
+<![endif]-->
+</head>
+<body>
+<div id="main_container">
+  <div class="top_illustration"></div>
+  <div id="header">
+    <div class="logo"> <img src="/views/images/logo.jpeg" alt="logo doodle" border="0" /> </div>
+  </div>
+  <div id="menu_tab">
+    <ul class="menu" style="margin-right: 10%;">
+      <li><a href="/doodle" class="nav"> Home </a></li>
+      <li class="divider"></li>
+      <li><a href="/doodle/creation" class="nav_selected"> Doodle</a></li>
+      <li class="divider"></li>
+      <li><a href="doodle/aide" class="nav"> Aide</a></li>
+      <li class="divider"></li>
+      <li><a href="/doodle/about" class="nav"> À propos </a></li>
+    </ul>
+  </div>
+  <div id="main_content">
+    <div id="middle_banner"></div>
+    <div id="wide_content">
+	  <h1 style="clear:both;">Adresse du sondage</h1>
+	  <p style="color: #514c48;">Sondage accessible à l'adresse suivante : <input size="39" value="<%= url %>"/></p>
+      </br>
+	  <h1 style="clear:both;">Sondage</h1>
+		<p style="color: #514c48;"><%= questions %></p>
+		<div style="display: table-cell;"><img style="max-width: 30%; max-height: auto; vertical-align: bottom; visibility: hidden;" src="/views/images/fleche_grise.png"><input style="margin-top: -10em; visibility: hidden; position: relative; margin-left: -11em; vertical-align:middle; margin-right: 3em;" size="11" type="text" name="nom" value="">
+			<% for(var i = 0; i < options.length - 1; i++){ %>
+				<span style="display: inline-block; width: 4.3em; margin: -10px auto; text-align: center; overflow: hidden; background-color: #ffecc9; font-size: 13px; color: #cc7000;"><%= options[i] %></span>
+			<% } %>		
+		</div>
+		<p style="line-height: 0em;">&nbsp;</p>
+		<!-- affiche le tableau -->
+		<% for(var i = 0; i < noms.length - 1; i++){ %>
+				<div style="display : table-cell; margin-top: -3em;"><img style="max-width: 30%; max-height: auto; vertical-align : middle;" src="/views/images/fleche_grise.png"><input style="position: relative; margin-left: -11em; vertical-align:middle; margin-right: 3em;" size="11" type="text" name="nom" value="<%= noms[i] %>" readonly="readonly">
+				<% for(var j = 0; j < options.length - 1; j++){ %>
+				    <% if(choix[i].search(options[j]) != -1){ %>
+						<span style="display: inline-block; width: 5.6em; background-color: #d1f3d1; margin: -10em auto; text-align: center;"><input style="vertical-align: middle;" type="checkbox" name="<%= options[j] %>" checked disabled="disabled" /></span>
+					<% } else{ %>
+							<span style="display: inline-block; width: 5.6em; margin: -10em auto; text-align: center; background-color: #ffccca;"><input style="vertical-align: middle;" type="checkbox" name="<%= options[j] %>" disabled="disabled" /></span>
+						<% } %>
+				<% } %>	
+				</div>
+				<p style="line-height: 0em; margin-top: -0.6em;">&nbsp;</p>
+			<% } %>
+		
+		<form action="/doodle/ajouter/<%= idQuestion %>" method="post">
+			<div style="display : table-cell;"><img style="max-width: 30%; max-height: auto; vertical-align : middle;" src="/views/images/fleche_bleu.png"><input style="position: relative; margin-left: -11em; vertical-align: middle; margin-right: 3em;" size="11" type="text" name="nom">
+				<% for(var j = 0; j < options.length - 1; j++){ %>
+					<span style="display: inline-block; width: 5.6em; background-color: #b2d1f9; margin: 0px auto; text-align: center; height: 80%;"><input style="vertical-align: middle;" type="checkbox" name="option<%= j %>"/></span>
+				<% } %>
+			</div>
+			</br>
+			</br>
+			<center><input type="submit"/></center>
+		</form>
+		</br>
+		<h1 style="clear: both;">Résultat des votes</h1>
+		</br>
+		<center><img src="/views/images/pie.png" alt="Diagramme circulaire" /></center>
+		</br>
+		<!-- affiche les légendes -->
+		<% for(var k = 0; k < options.length - 1; k++) { %>
+			<div style="float: left; margin-right: 1em; display: inline-block; width: 2.5em; height: 1.5em; border: 1px solid #000; background-color: <%= clr[k]%>;"></div>
+			<div style="font-size: 12px;"><%= options[k] %> : <span id=<%= k %>><%= votes[k]*100/(votes[0] + votes[1] + votes[2] + votes[3] + votes[4] + votes[5]) %></span> % (<%= votes[k] %> vote(s) )</div>
+			</br>
+			</br>
+		<% } %>
+    </div>
+	
+    <div id="footer">Project WEB Design &copy; 2014 <br />
+      By <a style="color: #FF6600; text-decoration:underline;">Project Team</a> </div>
+  </div>
+</div>
+</body>
+<script>
+//réduire la précision à 2 chiffres
+for(var f = 0; f < <%= options.length - 1%>; f++) {
+	document.getElementById(f).innerHTML = parseFloat(document.getElementById(f).innerHTML).toFixed(2);
+}
+</script>
+</html>

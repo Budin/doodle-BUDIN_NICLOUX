@@ -1,0 +1,1 @@
+{"Test":{"listeNoms":"Ugo Budin,Paul Nicloux,Robert,","listeChoix":"épinards;frites,kebab,;frites,;","question":"Quoi manger le midi","listeOptions":"épinards,frites,kebab,"},"-JVhi-_BS":{"listeNoms":"ugo,paul,","listeChoix":"bleu,vert,;rouge,;","question":"Quelle couleur de chemise conviendrait?","listeOptions":"bleu,rouge,vert,violet,orange,"}}
